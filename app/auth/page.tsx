@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { login } from './actions';
 import { useRouter } from 'next/navigation';
+import Button from '../components/button';
 
 export default function AuthPage() {
   const [data, setData] = useState(null);
@@ -18,7 +19,7 @@ export default function AuthPage() {
     <main>
       <h1>Welcome!</h1>
       <p>Login by registering as a guest below</p>
-      <button onClick={handleLogin}>Login</button>
+      <Button onClick={handleLogin}>Login</Button>
     </main>
   );
 }
