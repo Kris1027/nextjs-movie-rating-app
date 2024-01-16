@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { DisplayType } from '../page';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 type DisplayData = {
   id: number;
@@ -15,7 +16,7 @@ type DisplayData = {
 
 type ColumnDisplayProps = {
   data: DisplayData[];
-  displayType: DisplayType;
+  displayType?: DisplayType;
 };
 
 export default function ColumnDisplay(props: ColumnDisplayProps) {
@@ -43,12 +44,18 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
     <div className="flex flex-wrap text-vio gap-1 justify-center">
       {data.map((displayData) => (
         <div className=" bg-secondary w-[350px]" key={displayData.id}>
-          <Image
-            src={`https://image.tmdb.org/t/p/original${displayData.poster_path}`}
-            alt="movie poster"
-            height={500}
-            width={350}
-          />
+          <Link
+            href={`/${
+              displayType === DisplayType.Movies ? 'movies' : 'tvshows'
+            }/${displayData.id}`}
+          >
+            <Image
+              src={`https://image.tmdb.org/t/p/original${displayData.poster_path}`}
+              alt="movie poster"
+              height={500}
+              width={350}
+            />
+          </Link>
           <div className="p-2">
             <h1 className=" font-bold text-xl text-quinary">
               {displayType === DisplayType.Movies

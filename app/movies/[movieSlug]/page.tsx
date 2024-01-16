@@ -1,3 +1,7 @@
 export default function DetailedMoviePage() {
-  return <div>Detailed Movie Page</div>;
+  return (
+    <div>
+      <h1>Detailed Movie Page</h1>
+    </div>
+  );
 }
