@@ -22,6 +22,9 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
   const { data, displayType } = props;
 
   const ratingColor = (data: DisplayData) => {
+    if (data.vote_average >= 9) {
+      return 'text-violet-500';
+    }
     if (data.vote_average >= 8) {
       return 'text-green-500';
     }
@@ -37,7 +40,7 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
   };
 
   return (
-    <div className="flex flex-wrap gap-1 justify-center">
+    <div className="flex flex-wrap text-vio gap-1 justify-center">
       {data.map((displayData) => (
         <div className=" bg-secondary w-[350px]" key={displayData.id}>
           <Image
