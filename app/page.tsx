@@ -50,7 +50,7 @@ export default function Home() {
           onClick={() => setDisplayType(DisplayType.TvShows)}
           isSelected={displayType === DisplayType.TvShows}
         >
-          Tv Shows
+          TV Shows
         </Button>
       </div>
 
