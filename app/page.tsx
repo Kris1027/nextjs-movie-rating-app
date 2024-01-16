@@ -38,8 +38,8 @@ export default function Home() {
   }, [displayType]);
 
   return (
-    <main>
-      <div className="flex justify-center gap-1">
+    <main className="flex flex-col flex-wrap gap-5 p-5">
+      <div className="flex justify-center">
         <Button
           onClick={() => setDisplayType(DisplayType.Movies)}
           isSelected={displayType === DisplayType.Movies}

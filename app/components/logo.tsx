@@ -1,3 +1,3 @@
 export default function Logo() {
-  return <h1 className="bg-pink-400">Kris Movie Rating App</h1>;
+  return <h1 className=" text-2xl font-semibold">Kris Movie Rating App</h1>;
 }

@@ -12,7 +12,12 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button className={clsx('p-2', { 'bg-blue-500': isSelected })} {...props}>
+    <button
+      className={clsx('p-2 font-semibold text-2xl bg-tertiary text-primary', {
+        ' text-quinary': isSelected,
+      })}
+      {...props}
+    >
       {children}
     </button>
   );
