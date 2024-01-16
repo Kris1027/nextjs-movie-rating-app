@@ -1,17 +1,30 @@
+'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
+  const path = usePathname();
+
   return (
     <nav>
       <ul className="flex gap-3">
         <li>
-          <Link href="/">Home</Link>
+          <Link className={path === '/' ? 'text-red-500' : ''} href="/">
+            Home
+          </Link>
         </li>
         <li>
-          <Link href="/auth">Login</Link>
+          <Link className={path === '/auth' ? 'text-red-500' : ''} href="/auth">
+            Login
+          </Link>
         </li>
         <li>
-          <Link href="/rated">Rated</Link>
+          <Link
+            className={path === '/rated' ? 'text-red-500' : ''}
+            href="/rated"
+          >
+            Rated
+          </Link>
         </li>
       </ul>
     </nav>
