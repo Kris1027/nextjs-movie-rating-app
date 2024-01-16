@@ -75,7 +75,7 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
               </span>
             </p>
             <p className=" text-quaternary opacity-80">
-              Description: {displayData.overview.slice(0, 400) + '...'}
+              Description: {displayData.overview.slice(0, 200) + '...'}
             </p>
           </div>
         </div>
