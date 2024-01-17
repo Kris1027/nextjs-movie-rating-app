@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { login } from './actions';
 import { useRouter } from 'next/navigation';
-import Button from '../components/button';
+import Button from '../ui/button';
 
 export default function AuthPage() {
   const [data, setData] = useState(null);

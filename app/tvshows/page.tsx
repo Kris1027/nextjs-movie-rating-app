@@ -11,7 +11,7 @@ type TvShowProps = {
   first_air_date?: string;
 };
 
-export default async function MoviesPage() {
+export default async function TvShowsPage() {
   const tvShows = await fetchTvShows();
 
   return (

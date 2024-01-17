@@ -52,8 +52,8 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
             <Image
               src={`https://image.tmdb.org/t/p/original${displayData.poster_path}`}
               alt="movie poster"
-              height={500}
-              width={350}
+              height={450}
+              width={300}
             />
           </Link>
           <div className="p-2">

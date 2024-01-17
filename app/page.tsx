@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Button from './components/button';
+import Button from './ui/button';
 import ColumnDisplay from './components/column-display';
 import { fetchMovies, fetchTvShows } from './lib/fetchData';
 
@@ -14,23 +14,15 @@ export default function Home() {
     DisplayType.Movies
   );
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        if (displayType === DisplayType.Movies) {
-          const data = await fetchMovies();
-          setData(data.results);
-        } else {
-          const data = await fetchTvShows();
-          setData(data.results);
-        }
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
+      if (displayType === DisplayType.Movies) {
+        const data = await fetchMovies();
+        setData(data.results);
+      } else {
+        const data = await fetchTvShows();
+        setData(data.results);
       }
     }
 
@@ -38,7 +30,7 @@ export default function Home() {
   }, [displayType]);
 
   return (
-    <main className="flex flex-col flex-wrap gap-5 p-5">
+    <main className="flex flex-wrap gap-4 justify-center p-4">
       <div className="flex justify-center">
         <Button
           onClick={() => setDisplayType(DisplayType.Movies)}
@@ -53,9 +45,6 @@ export default function Home() {
           TV Shows
         </Button>
       </div>
-
-      {isLoading && <div>Loading...</div>}
-      {isError && <div>Something went wrong...</div>}
 
       <div>
         {displayType === DisplayType.Movies ? (
