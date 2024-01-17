@@ -9,6 +9,10 @@ export async function fetchMovies() {
     }
   );
 
+  if (!res.ok) {
+    throw new Error('Something went wrong with fetching movies');
+  }
+
   return res.json();
 }
 
@@ -22,6 +26,10 @@ export async function fetchTvShows() {
       },
     }
   );
+
+  if (!res.ok) {
+    throw new Error('Something went wrong with fetching tv shows');
+  }
 
   return res.json();
 }
@@ -37,12 +45,16 @@ export async function fetchMovieDetails(movieSlug: string) {
     }
   );
 
+  if (!res.ok) {
+    throw new Error('Something went wrong with fetching movie details');
+  }
+
   return res.json();
 }
 
-export async function fetchTvShowDetails(movieSlug: string) {
+export async function fetchTvShowDetails(tvShowSlug: string) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/${movieSlug}?language=en-US`,
+    `https://api.themoviedb.org/3/tv/${tvShowSlug}?language=en-US`,
     {
       headers: {
         Authorization:
@@ -50,6 +62,10 @@ export async function fetchTvShowDetails(movieSlug: string) {
       },
     }
   );
+
+  if (!res.ok) {
+    throw new Error('Something went wrong with fetching tv show details');
+  }
 
   return res.json();
 }

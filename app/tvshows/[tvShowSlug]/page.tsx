@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { fetchTvShowDetails, fetchTvShows } from '@/app/lib/fetchData';
+import { fetchTvShowDetails } from '@/app/lib/fetchData';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 type MovieProps = {
   name: string;
@@ -15,21 +16,21 @@ type MovieProps = {
 export default function DetailedTvShowPage({
   params,
 }: {
-  params: { TvShowSlug: string };
+  params: { tvShowSlug: string };
 }) {
   const [movie, setMovie] = useState<MovieProps | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieDetails = await fetchTvShowDetails(params.TvShowSlug);
+      const movieDetails = await fetchTvShowDetails(params.tvShowSlug);
       setMovie(movieDetails);
     };
 
     fetchData();
-  }, [params.TvShowSlug]);
+  }, [params.tvShowSlug]);
 
   if (!movie) {
-    return <div>Loading...</div>;
+    notFound();
   }
 
   return (
