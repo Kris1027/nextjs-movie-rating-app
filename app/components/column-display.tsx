@@ -41,21 +41,21 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
   };
 
   return (
-    <div className="flex flex-wrap text-vio gap-1 justify-center">
+    <div className="flex flex-wrap gap-4 justify-center">
       {data.map((displayData) => (
-        <div className=" bg-secondary w-[350px]" key={displayData.id}>
-          <Link
-            href={`/${
-              displayType === DisplayType.Movies ? 'movies' : 'tvshows'
-            }/${displayData.id}`}
-          >
-            <Image
-              src={`https://image.tmdb.org/t/p/original${displayData.poster_path}`}
-              alt="movie poster"
-              height={450}
-              width={300}
-            />
-          </Link>
+        <Link
+          href={`/${
+            displayType === DisplayType.Movies ? 'movies' : 'tvshows'
+          }/${displayData.id}`}
+          className="flex flex-col bg-secondary w-[300px]"
+          key={displayData.id}
+        >
+          <Image
+            src={`https://image.tmdb.org/t/p/original${displayData.poster_path}`}
+            alt="movie poster"
+            height={450}
+            width={300}
+          />
           <div className="p-2">
             <h1 className=" font-bold text-xl text-quinary">
               {displayType === DisplayType.Movies
@@ -78,7 +78,7 @@ export default function ColumnDisplay(props: ColumnDisplayProps) {
               Description: {displayData.overview.slice(0, 200) + '...'}
             </p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
