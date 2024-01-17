@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { fetchMovies } from '../lib/fetchData';
+import Link from 'next/link';
 
 type MovieProps = {
   id: number;
@@ -16,7 +17,11 @@ export default async function MoviesPage() {
   return (
     <main className="flex flex-wrap gap-4 justify-center p-4">
       {movies.results.map((movie: MovieProps) => (
-        <div key={movie.id} className="flex flex-col bg-secondary w-[300px]">
+        <Link
+          href={`/movies/${movie.id}`}
+          key={movie.id}
+          className="flex flex-col bg-secondary w-[300px]"
+        >
           <Image
             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt={`${movie.title} poster`}
@@ -31,7 +36,7 @@ export default async function MoviesPage() {
             </p>
             <p>{movie.overview.slice(0, 250) + '...'}</p>
           </div>
-        </div>
+        </Link>
       ))}
     </main>
   );
