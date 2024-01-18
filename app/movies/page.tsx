@@ -1,14 +1,5 @@
 import { fetchMovies } from '../lib/fetchData';
-import MovieItem from '../components/movie-item';
-
-type MovieProps = {
-  id: number;
-  overview: string;
-  poster_path: string;
-  title: string;
-  vote_average: number;
-  release_date: string;
-};
+import MovieItem, { type MovieProps } from '../components/movie-item';
 
 export default async function MoviesPage() {
   const movies = await fetchMovies();

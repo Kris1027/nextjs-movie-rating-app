@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-type MovieProps = {
+export type MovieProps = {
   id: number;
   overview: string;
   poster_path: string;
