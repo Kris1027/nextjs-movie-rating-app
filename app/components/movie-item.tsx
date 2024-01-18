@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 export type MovieProps = {
   id: number;
-  overview: string;
   poster_path: string;
   title: string;
   vote_average: number;
@@ -30,30 +29,23 @@ export default function MovieItem({ movie }: { movie: MovieProps }) {
   };
 
   return (
-    <Link
-      href={`/movies/${movie.id}`}
-      className="flex flex-col bg-secondary w-[300px]"
-    >
-      <Image
-        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        alt={`${movie.title} poster`}
-        width={300}
-        height={450}
-      />
-      <div className="p-2">
-        <h2 className="flex justify-between font-bold text-xl p-1">
+    <Link className="w-[350px] h-[450px] relative" href={`/movies/${movie.id}`}>
+      <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-80 h-full bg-secondary bg-opacity-60 flex flex-col">
+        <h1 className="flex justify-between font-bold text-xl p-1">
           <span>{movie.title}</span>{' '}
           <span className={ratingMovieColor()}>
             {movie.vote_average.toFixed(2)}
           </span>
-        </h2>
-        <p className="italic text-quaternary">
+        </h1>
+        <p className="italic">
           Release date: <span>{movie.release_date}</span>
         </p>
-        <p className="text-quaternary opacity-80">
-          {movie.overview.slice(0, 250) + '...'}
-        </p>
       </div>
+      <Image
+        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+        alt={`${movie.title} poster`}
+        fill
+      />
     </Link>
   );
 }
