@@ -31,7 +31,7 @@ export default function TvShowItem({ tvShow }: { tvShow: TvShowProps }) {
 
   return (
     <Link
-      href={`/movies/${tvShow.id}`}
+      href={`/tvshows/${tvShow.id}`}
       className="flex flex-col bg-secondary w-[300px]"
     >
       <Image
