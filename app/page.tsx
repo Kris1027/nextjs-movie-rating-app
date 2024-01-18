@@ -1,57 +1,28 @@
-'use client';
-import { useEffect, useState } from 'react';
-import Button from './ui/button';
-import ColumnDisplay from './components/column-display';
+import MovieItem, { type MovieProps } from './components/movie-item';
 import { fetchMovies, fetchTvShows } from './lib/fetchData';
+import TvShowItem, { type TvShowProps } from './components/tvshow-item';
 
-export enum DisplayType {
-  Movies = 'movies',
-  TvShows = 'tvshows',
-}
-
-export default function Home() {
-  const [displayType, setDisplayType] = useState<DisplayType>(
-    DisplayType.Movies
-  );
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      if (displayType === DisplayType.Movies) {
-        const data = await fetchMovies();
-        setData(data.results);
-      } else {
-        const data = await fetchTvShows();
-        setData(data.results);
-      }
-    }
-
-    fetchData();
-  }, [displayType]);
+export default async function Home() {
+  const movies = await fetchMovies();
+  const tvShows = await fetchTvShows();
 
   return (
-    <main className="flex flex-wrap gap-4 justify-center p-4">
-      <div className="flex justify-center">
-        <Button
-          onClick={() => setDisplayType(DisplayType.Movies)}
-          isSelected={displayType === DisplayType.Movies}
-        >
-          Movies
-        </Button>
-        <Button
-          onClick={() => setDisplayType(DisplayType.TvShows)}
-          isSelected={displayType === DisplayType.TvShows}
-        >
-          TV Shows
-        </Button>
+    <main className="p-4">
+      <h1 className="text-center pb-4 text-3xl text-quaternary uppercase">
+        Find your favorite movies
+      </h1>
+      <div className="flex flex-wrap gap-4 justify-center">
+        {movies.results.map((movie: MovieProps) => (
+          <MovieItem key={movie.id} movie={movie} />
+        ))}
       </div>
-
-      <div>
-        {displayType === DisplayType.Movies ? (
-          <ColumnDisplay data={data} displayType={DisplayType.Movies} />
-        ) : (
-          <ColumnDisplay data={data} displayType={DisplayType.TvShows} />
-        )}
+      <h1 className="text-center pb-4 text-3xl text-quaternary uppercase">
+        Find your favorite tv shows
+      </h1>
+      <div className="flex flex-wrap gap-4 justify-center p-4">
+        {tvShows.results.map((tvShow: TvShowProps) => (
+          <TvShowItem key={tvShow.id} tvShow={tvShow} />
+        ))}
       </div>
     </main>
   );
