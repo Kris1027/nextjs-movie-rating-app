@@ -14,8 +14,8 @@ export default async function DetailedMoviePage({
   }
 
   return (
-    <div>
+    <main className="flex flex-wrap justify-center p-4 gap-4">
       <DetailedMovieItem movie={movie} />
-    </div>
+    </main>
   );
 }

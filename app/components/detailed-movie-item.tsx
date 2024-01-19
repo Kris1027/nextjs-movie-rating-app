@@ -51,16 +51,14 @@ export default function DetailedMovieItem({ movie }: Movie) {
   };
 
   return (
-    <main className="flex gap-4 w-3/4 mx-auto p-4">
-      <div>
-        <Image
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-          alt={`${movie.title} poster`}
-          width={500}
-          height={650}
-        />
-      </div>
-      <div>
+    <>
+      <Image
+        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+        alt={`${movie.title} poster`}
+        width={500}
+        height={750}
+      />
+      <div className="w-[500px]">
         <h1 className="text-3xl font-bold">{movie.title}</h1>
         <p className={ratingMovieColor()}>{movie.vote_average.toFixed(2)}</p>
         <p>{movie.release_date}</p>
@@ -92,6 +90,6 @@ export default function DetailedMovieItem({ movie }: Movie) {
         <p>Runtime: {movie.runtime}</p>
         <p>Language: {movie.original_language}</p>
       </div>
-    </main>
+    </>
   );
 }
