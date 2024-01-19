@@ -1,3 +1,4 @@
+import DetailedMovieItem from '@/app/components/detailed-movie-item';
 import { fetchMovieDetails } from '@/app/lib/fetchData';
 import { notFound } from 'next/navigation';
 
@@ -14,8 +15,7 @@ export default async function DetailedMoviePage({
 
   return (
     <div>
-      <h1>Detailed movie page</h1>
-      <p>{movie.title}</p>
+      <DetailedMovieItem movie={movie} />
     </div>
   );
 }
