@@ -9,8 +9,8 @@ export default async function DetailedTvShowPage({
   const tvShow = await fetchTvShowDetails(params.tvShowSlug);
 
   return (
-    <div>
+    <main className="flex justify-center p-4 gap-4">
       <DetailedTvshowItem tvShow={tvShow} />
-    </div>
+    </main>
   );
 }

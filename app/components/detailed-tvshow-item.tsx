@@ -5,14 +5,10 @@ type DetailedTvshowItemProps = {
   adult: boolean;
   overview: string;
   poster_path: string;
-  release_date: string;
+  first_air_date: string;
   vote_average: number;
-  budget: number;
   genres: Genres[];
   popularity: number;
-  imdb_id: string;
-  revenue: number;
-  runtime: number;
   original_language: string;
 };
 
@@ -50,20 +46,17 @@ export default function DetailedTvshowItem({ tvShow }: TvShow) {
   };
 
   return (
-    <main className="flex gap-4 w-3/4 mx-auto p-4">
-      <div>
-        <Image
-          src={`https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
-          alt={`${tvShow.name} poster`}
-          width={500}
-          height={650}
-        />
-      </div>
-      <div>
+    <>
+      <Image
+        src={`https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
+        alt={`${tvShow.name} poster`}
+        width={500}
+        height={750}
+      />
+      <div className="w-[500px]">
         <h1 className="text-3xl font-bold">{tvShow.name}</h1>
         <p className={ratingMovieColor()}>{tvShow.vote_average.toFixed(2)}</p>
-        <p>{tvShow.release_date}</p>
-        <p>IMDB ID: {tvShow.imdb_id}</p>
+        <p>{tvShow.first_air_date}</p>
         <p>
           Is movie for adult:{' '}
           {tvShow.adult ? (
@@ -72,7 +65,6 @@ export default function DetailedTvshowItem({ tvShow }: TvShow) {
             <span className="text-green-500">No</span>
           )}
         </p>
-        <p>Budget: {tvShow.budget} $</p>
         <p className="flex gap-1">
           Genres:
           {tvShow.genres.map((gen) => (
@@ -81,10 +73,8 @@ export default function DetailedTvshowItem({ tvShow }: TvShow) {
         </p>
         <p>Popularity: {tvShow.popularity}</p>
         <p>{tvShow.overview}</p>
-        <p>Revenue: {tvShow.revenue}</p>
-        <p>Runtime: {tvShow.runtime}</p>
         <p>Language: {tvShow.original_language}</p>
       </div>
-    </main>
+    </>
   );
 }
