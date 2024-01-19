@@ -1,3 +1,4 @@
+import DetailedTvshowItem from '@/app/components/detailed-tvshow-item';
 import { fetchTvShowDetails } from '@/app/lib/fetchData';
 
 export default async function DetailedTvShowPage({
@@ -9,8 +10,7 @@ export default async function DetailedTvShowPage({
 
   return (
     <div>
-      <h1>Detailed Tv show page</h1>
-      <p>{tvShow.name}</p>
+      <DetailedTvshowItem tvShow={tvShow} />
     </div>
   );
 }

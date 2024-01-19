@@ -31,7 +31,7 @@ export default function TvShowItem({ tvShow }: { tvShow: TvShowProps }) {
   return (
     <Link
       className="w-[350px] h-[450px] relative"
-      href={`/movies/${tvShow.id}`}
+      href={`/tvshows/${tvShow.id}`}
     >
       <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-80 h-full bg-secondary bg-opacity-60 flex flex-col">
         <h1 className="flex justify-between font-bold text-xl p-1">
