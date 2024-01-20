@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { RateMovie, RateTvShow } from '../lib/rateData';
+import Button from '../ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function RatingItem({
   id,
@@ -10,6 +12,7 @@ export default function RatingItem({
   type: 'movie' | 'tvShow';
 }) {
   const [rating, setRating] = useState<number>(0);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,11 +22,11 @@ export default function RatingItem({
     } else if (type === 'tvShow') {
       response = await RateTvShow(id, rating);
     }
-    console.log(response);
+    router.push('/rated');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex">
       <input
         type="number"
         min="0"
@@ -31,7 +34,7 @@ export default function RatingItem({
         step="0.5"
         onChange={(e) => setRating(Number(e.target.value))}
       />
-      <button type="submit">rate</button>
+      <Button type="submit">rate</Button>
     </form>
   );
 }
