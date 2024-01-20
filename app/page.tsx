@@ -7,7 +7,7 @@ export default async function Home() {
   const tvShows = await fetchTvShows();
 
   return (
-    <main className="p-4">
+    <main className="p-4 max-w-[1280px] mx-auto">
       <h1 className="text-center pb-4 text-3xl text-quaternary uppercase">
         Find your favorite movies
       </h1>

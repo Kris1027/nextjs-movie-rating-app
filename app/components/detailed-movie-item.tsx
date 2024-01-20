@@ -58,7 +58,7 @@ export default function DetailedMovieItem({ movie }: Movie) {
         width={500}
         height={750}
       />
-      <div className="w-[500px]">
+      <div>
         <h1 className="text-3xl font-bold">{movie.title}</h1>
         <p className={ratingMovieColor()}>{movie.vote_average.toFixed(2)}</p>
         <p>{movie.release_date}</p>

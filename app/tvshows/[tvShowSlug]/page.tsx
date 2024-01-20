@@ -9,7 +9,7 @@ export default async function DetailedTvShowPage({
   const tvShow = await fetchTvShowDetails(params.tvShowSlug);
 
   return (
-    <main className="flex flex-wrap justify-center p-4 gap-4">
+    <main className="flex flex-wrap md:flex-nowrap justify-center items-center gap-4 py-4 max-w-[1280px] mx-auto">
       <DetailedTvshowItem tvShow={tvShow} />
     </main>
   );

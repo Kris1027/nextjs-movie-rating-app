@@ -14,7 +14,7 @@ export default async function DetailedMoviePage({
   }
 
   return (
-    <main className="flex flex-wrap justify-center p-4 gap-4">
+    <main className="flex flex-wrap md:flex-nowrap justify-center items-center gap-4 py-4 max-w-[1280px] mx-auto">
       <DetailedMovieItem movie={movie} />
     </main>
   );

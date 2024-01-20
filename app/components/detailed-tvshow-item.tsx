@@ -53,7 +53,7 @@ export default function DetailedTvshowItem({ tvShow }: TvShow) {
         width={500}
         height={750}
       />
-      <div className="w-[500px]">
+      <div>
         <h1 className="text-3xl font-bold">{tvShow.name}</h1>
         <p className={ratingMovieColor()}>{tvShow.vote_average.toFixed(2)}</p>
         <p>{tvShow.first_air_date}</p>
