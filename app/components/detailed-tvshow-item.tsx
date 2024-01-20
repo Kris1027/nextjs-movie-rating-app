@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import RatingItem from './rating-item';
 
 type DetailedTvshowItemProps = {
+  id: number;
   name: string;
   adult: boolean;
   overview: string;
@@ -74,6 +76,7 @@ export default function DetailedTvshowItem({ tvShow }: TvShow) {
         <p>Popularity: {tvShow.popularity}</p>
         <p>{tvShow.overview}</p>
         <p>Language: {tvShow.original_language}</p>
+        <RatingItem id={tvShow.id} type="tvShow" />
       </div>
     </>
   );

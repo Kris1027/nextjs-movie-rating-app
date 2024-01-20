@@ -91,7 +91,7 @@ export default function DetailedMovieItem({ movie }: Movie) {
         <p>Revenue: {movie.revenue}</p>
         <p>Runtime: {movie.runtime}</p>
         <p>Language: {movie.original_language}</p>
-        <RatingItem movieId={movie.id} />
+        <RatingItem id={movie.id} type="movie" />
       </div>
     </>
   );

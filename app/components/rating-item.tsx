@@ -1,13 +1,24 @@
 'use client';
 import { useState } from 'react';
-import { RateMovie } from '../lib/rateData';
+import { RateMovie, RateTvShow } from '../lib/rateData';
 
-export default function RatingItem({ movieId }: { movieId: number }) {
+export default function RatingItem({
+  id,
+  type,
+}: {
+  id: number;
+  type: 'movie' | 'tvShow';
+}) {
   const [rating, setRating] = useState<number>(0);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await RateMovie(movieId, rating);
+    let response;
+    if (type === 'movie') {
+      response = await RateMovie(id, rating);
+    } else if (type === 'tvShow') {
+      response = await RateTvShow(id, rating);
+    }
     console.log(response);
   };
 
