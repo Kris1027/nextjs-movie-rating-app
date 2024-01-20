@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import RatingItem from './rating-item';
 
 type DetailedMovieItemProps = {
+  id: number;
   title: string;
   adult: boolean;
   overview: string;
@@ -89,6 +91,7 @@ export default function DetailedMovieItem({ movie }: Movie) {
         <p>Revenue: {movie.revenue}</p>
         <p>Runtime: {movie.runtime}</p>
         <p>Language: {movie.original_language}</p>
+        <RatingItem movieId={movie.id} />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 export async function RateMovie(movieId: number, rating: number) {
   const res = await fetch(
-    `http//api.themoviedb.org/3/movie/${movieId}/rating?guest_session_id=${localStorage.getItem(
+    `http://api.themoviedb.org/3/movie/${movieId}/rating?guest_session_id=${localStorage.getItem(
       'guest_session_id'
     )}&api_key=1f6707947cf0eca727cc2f9b144ea076`,
     {
