@@ -12,7 +12,6 @@ export default function RatingItem({
   type: 'movie' | 'tvShow';
 }) {
   const [rating, setRating] = useState<number>(0);
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,7 +23,6 @@ export default function RatingItem({
     }
     if (response) {
       alert('Rated!');
-      router.push('/rated');
     } else {
       alert('Something went wrong!');
     }

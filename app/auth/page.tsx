@@ -1,17 +1,19 @@
 'use client';
 import { useState } from 'react';
-import { login } from './actions';
 import { useRouter } from 'next/navigation';
 import Button from '../ui/button';
+import { GetSessionId } from '../lib/auth';
 
 export default function AuthPage() {
   const [data, setData] = useState(null);
   const router = useRouter();
 
-  const handleLogin = async () => {
-    const response = await login();
-    setData(response);
+  const handleLogin = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const response = await GetSessionId();
+
     localStorage.setItem('guest_session_id', response.guest_session_id);
+    setData(response);
     router.push('/');
   };
 
@@ -19,7 +21,9 @@ export default function AuthPage() {
     <main>
       <h1>Welcome!</h1>
       <p>Login by registering as a guest below</p>
-      <Button onClick={handleLogin}>Login</Button>
+      <form onSubmit={handleLogin}>
+        <Button type="submit">Login</Button>
+      </form>
     </main>
   );
 }

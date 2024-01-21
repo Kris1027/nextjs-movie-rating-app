@@ -45,13 +45,3 @@ export async function GetRatedMovies() {
 
   return res.json();
 }
-
-export async function GetRatedTvShows() {
-  const res = await fetch(
-    `http://api.themoviedb.org/3/guest_session/${localStorage.getItem(
-      'guest_session_id'
-    )}/rated/tv?language=en-US&page=1&sort_by=created_at.asc&api_key=1f6707947cf0eca727cc2f9b144ea076`
-  );
-
-  return res.json();
-}
