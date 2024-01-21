@@ -1,6 +1,6 @@
 export async function RateMovie(movieId: number, rating: number) {
   const res = await fetch(
-    `http://api.themoviedb.org/3/movie/${movieId}/rating?guest_session_id=${localStorage.getItem(
+    `https://api.themoviedb.org/3/movie/${movieId}/rating?guest_session_id=${localStorage.getItem(
       'guest_session_id'
     )}&api_key=1f6707947cf0eca727cc2f9b144ea076`,
     {
@@ -19,7 +19,7 @@ export async function RateMovie(movieId: number, rating: number) {
 
 export async function RateTvShow(tvShowId: number, rating: number) {
   const res = await fetch(
-    `http://api.themoviedb.org/3/tv/${tvShowId}/rating?guest_session_id=${localStorage.getItem(
+    `https://api.themoviedb.org/3/tv/${tvShowId}/rating?guest_session_id=${localStorage.getItem(
       'guest_session_id'
     )}&api_key=1f6707947cf0eca727cc2f9b144ea076`,
     {
@@ -38,7 +38,7 @@ export async function RateTvShow(tvShowId: number, rating: number) {
 
 export async function GetRatedMovies() {
   const res = await fetch(
-    `http://api.themoviedb.org/3/guest_session/${localStorage.getItem(
+    `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
       'guest_session_id'
     )}/rated/movies?language=en-US&page=1&sort_by=created_at.asc&api_key=1f6707947cf0eca727cc2f9b144ea076`
   );
@@ -48,7 +48,7 @@ export async function GetRatedMovies() {
 
 export async function GetRatedTvShows() {
   const res = await fetch(
-    `http://api.themoviedb.org/3/guest_session/${localStorage.getItem(
+    `https://api.themoviedb.org/3/guest_session/${localStorage.getItem(
       'guest_session_id'
     )}/rated/tv?language=en-US&page=1&sort_by=created_at.asc&api_key=1f6707947cf0eca727cc2f9b144ea076`
   );
