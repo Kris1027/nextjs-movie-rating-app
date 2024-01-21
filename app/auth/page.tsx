@@ -18,7 +18,7 @@ export default function AuthPage() {
   };
 
   return (
-    <main>
+    <main className="flex flex-col flex-wrap gap-4 items-center p-4 max-w-[1280px] mx-auto">
       <h1>Welcome!</h1>
       <p>Login by registering as a guest below</p>
       <form onSubmit={handleLogin}>

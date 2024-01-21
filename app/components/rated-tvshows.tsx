@@ -16,10 +16,10 @@ export default function RatedTvShows() {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-wrap gap-4">
       {ratedTvShows.results.map((tvShow: TvShowProps) => (
         <TvShowItem key={tvShow.id} tvShow={tvShow} />
       ))}
-    </>
+    </div>
   );
 }

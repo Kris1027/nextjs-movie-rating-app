@@ -16,10 +16,10 @@ export default function RatedMovies() {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-wrap gap-4">
       {ratedMovies.results.map((movie: MovieProps) => (
         <MovieItem key={movie.id} movie={movie} />
       ))}
-    </>
+    </div>
   );
 }
