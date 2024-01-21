@@ -22,7 +22,12 @@ export default function RatingItem({
     } else if (type === 'tvShow') {
       response = await RateTvShow(id, rating);
     }
-    router.push('/rated');
+    if (response) {
+      alert('Rated!');
+      router.push('/rated');
+    } else {
+      alert('Something went wrong!');
+    }
   };
 
   return (
