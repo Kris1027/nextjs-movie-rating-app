@@ -7,6 +7,7 @@ export type MovieProps = {
   title: string;
   vote_average: number;
   release_date: string;
+  rating?: number;
 };
 
 export default function MovieItem({ movie }: { movie: MovieProps }) {
@@ -30,8 +31,8 @@ export default function MovieItem({ movie }: { movie: MovieProps }) {
 
   return (
     <Link className="w-[350px] h-[450px] relative" href={`/movies/${movie.id}`}>
-      <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-80 h-full bg-secondary bg-opacity-60 flex flex-col">
-        <h1 className="flex justify-between font-bold text-xl p-1">
+      <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-100 h-full bg-secondary bg-opacity-60 flex flex-col items-start">
+        <h1 className="font-bold text-3xl p-1 w-full flex justify-between">
           <span>{movie.title}</span>{' '}
           <span className={ratingMovieColor()}>
             {movie.vote_average.toFixed(2)}
@@ -40,6 +41,12 @@ export default function MovieItem({ movie }: { movie: MovieProps }) {
         <p className="italic">
           Release date: <span>{movie.release_date}</span>
         </p>
+        {movie.rating && (
+          <p className="text-3xl">
+            Your Rating:{' '}
+            <span className="font-bold text-red-500">{movie.rating}</span>
+          </p>
+        )}
       </div>
       <Image
         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}

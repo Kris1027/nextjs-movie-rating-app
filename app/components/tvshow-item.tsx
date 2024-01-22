@@ -7,6 +7,7 @@ export type TvShowProps = {
   name: string;
   vote_average: number;
   first_air_date?: string;
+  rating?: number;
 };
 
 export default function TvShowItem({ tvShow }: { tvShow: TvShowProps }) {
@@ -33,8 +34,8 @@ export default function TvShowItem({ tvShow }: { tvShow: TvShowProps }) {
       className="w-[350px] h-[450px] relative"
       href={`/tvshows/${tvShow.id}`}
     >
-      <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-80 h-full bg-secondary bg-opacity-60 flex flex-col">
-        <h1 className="flex justify-between font-bold text-xl p-1">
+      <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-100 h-full bg-secondary bg-opacity-60 flex flex-col items-start">
+        <h1 className="font-bold text-3xl p-1 w-full flex justify-between">
           <span>{tvShow.name}</span>{' '}
           <span className={ratingTvShowColor()}>
             {tvShow.vote_average.toFixed(2)}
@@ -43,6 +44,12 @@ export default function TvShowItem({ tvShow }: { tvShow: TvShowProps }) {
         <p className="italic">
           Release date: <span>{tvShow.first_air_date}</span>
         </p>
+        {tvShow.rating && (
+          <p className="text-3xl">
+            Your Rating:{' '}
+            <span className="font-bold text-red-500">{tvShow.rating}</span>
+          </p>
+        )}
       </div>
       <Image
         src={`https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
