@@ -17,13 +17,29 @@ export default function AuthPage() {
     router.push('/');
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('guest_session_id');
+  };
+
+  const isLoggedIn =
+    typeof window !== 'undefined' &&
+    localStorage.getItem('guest_session_id') !== null;
+
   return (
     <main className="flex flex-col flex-wrap gap-4 items-center p-4 max-w-[1280px] mx-auto">
-      <h1>Welcome!</h1>
-      <p>Login by registering as a guest below</p>
-      <form onSubmit={handleLogin}>
-        <Button type="submit">Login</Button>
-      </form>
+      {isLoggedIn ? (
+        <form onSubmit={handleLogout}>
+          <Button type="submit">Logout</Button>
+        </form>
+      ) : (
+        <>
+          <h1>Welcome!</h1>
+          <p>Login by registering as a guest below</p>
+          <form onSubmit={handleLogin}>
+            <Button type="submit">Login</Button>
+          </form>
+        </>
+      )}
     </main>
   );
 }
