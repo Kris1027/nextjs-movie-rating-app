@@ -14,11 +14,6 @@ export default function Navigation() {
           </Link>
         </li>
         <li>
-          <Link className={path === '/auth' ? 'text-red-500' : ''} href="/auth">
-            Login
-          </Link>
-        </li>
-        <li>
           <Link
             className={path === '/rated' ? 'text-red-500' : ''}
             href="/rated"
@@ -40,6 +35,11 @@ export default function Navigation() {
             href="/tvshows"
           >
             TV Shows
+          </Link>
+        </li>
+        <li>
+          <Link className={path === '/auth' ? 'text-red-500' : ''} href="/auth">
+            Login
           </Link>
         </li>
       </ul>
