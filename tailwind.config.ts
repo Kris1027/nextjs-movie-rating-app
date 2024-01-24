@@ -15,11 +15,6 @@ const config: Config = {
         quaternary: '#6B654B',
         quinary: '#D4DF9E',
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
     },
   },
   plugins: [],
