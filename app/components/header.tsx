@@ -4,6 +4,7 @@ import Navigation from './navigation';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { useState } from 'react';
+import NavigationMobile from './navigation-mobile';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,18 +14,16 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between bg-secondary h-10 items-center p-6 max-w-[1280px] mx-auto">
+    <header className="flex justify-between bg-secondary h-10 items-center p-6 max-w-[1280px] mx-auto relative">
       <Logo />
-      <div onClick={handleClick}>
+      <div onClick={handleClick} className="sm:hidden">
         {isMenuOpen ? (
-          <RxHamburgerMenu className="sm:hidden" size={30} />
+          <IoMdCloseCircleOutline size={30} />
         ) : (
-          <IoMdCloseCircleOutline className="sm:hidden" size={30} />
+          <RxHamburgerMenu size={30} />
         )}
       </div>
-      <div className="hidden sm:block">
-        <Navigation />
-      </div>
+      {isMenuOpen ? <NavigationMobile /> : <Navigation />}
     </header>
   );
 }

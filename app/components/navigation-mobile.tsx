@@ -1,13 +1,12 @@
-'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function Navigation() {
+export default function NavigationMobile() {
   const path = usePathname();
 
   return (
-    <nav className="hidden sm:block">
-      <ul className="flex gap-3">
+    <nav className="bg-quaternary absolute w-full top-12 z-10">
+      <ul className="flex flex-col items-center gap-3">
         <li>
           <Link className={path === '/' ? 'text-red-500' : ''} href="/">
             Home
