@@ -22,7 +22,7 @@ export default function RatedMovies() {
           <MovieItem key={movie.id} movie={movie} />
         ))
       ) : (
-        <p>No rated tvShows</p>
+        <p>No rated movies</p>
       )}
     </div>
   );

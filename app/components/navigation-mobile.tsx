@@ -1,25 +1,53 @@
+'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { GetSessionId } from '../lib/auth';
 
 export default function NavigationMobile() {
   const path = usePathname();
+  const [data, setData] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedIn =
+      typeof window !== 'undefined' &&
+      localStorage.getItem('guest_session_id') !== null;
+    setLoggedIn(loggedIn);
+  }, []);
+
+  const handleLogin = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const response = await GetSessionId();
+    setLoggedIn(true);
+
+    localStorage.setItem('guest_session_id', response.guest_session_id);
+    setData(response);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('guest_session_id');
+    setLoggedIn(false);
+  };
 
   return (
     <nav className="bg-quaternary absolute w-full top-12 z-10">
-      <ul className="flex flex-col items-center gap-3">
+      <ul className="flex gap-3">
         <li>
           <Link className={path === '/' ? 'text-red-500' : ''} href="/">
             Home
           </Link>
         </li>
-        <li>
-          <Link
-            className={path === '/rated' ? 'text-red-500' : ''}
-            href="/rated"
-          >
-            Rated
-          </Link>
-        </li>
+        {loggedIn && (
+          <li>
+            <Link
+              className={path === '/rated' ? 'text-red-500' : ''}
+              href="/rated"
+            >
+              Rated
+            </Link>
+          </li>
+        )}
         <li>
           <Link
             className={path === '/movies' ? 'text-red-500' : ''}
@@ -37,9 +65,11 @@ export default function NavigationMobile() {
           </Link>
         </li>
         <li>
-          <Link className={path === '/auth' ? 'text-red-500' : ''} href="/auth">
-            Login
-          </Link>
+          {!loggedIn ? (
+            <button onClick={handleLogin}>login</button>
+          ) : (
+            <button onClick={handleLogout}>logout</button>
+          )}
         </li>
       </ul>
     </nav>
