@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { RateMovie, RateTvShow } from '../lib/rateData';
 import Button from '../ui/button';
-import { useRouter } from 'next/navigation';
 
 export default function RatingItem({
   id,

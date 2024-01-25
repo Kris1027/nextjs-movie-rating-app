@@ -13,13 +13,17 @@ export default function RatedTvShows() {
     };
 
     fetchRatedMovies();
-  }, []);
+  }, [ratedTvShows.results.length]);
 
   return (
     <div className="flex flex-wrap gap-4">
-      {ratedTvShows.results.map((tvShow: TvShowProps) => (
-        <TvShowItem key={tvShow.id} tvShow={tvShow} />
-      ))}
+      {ratedTvShows.results.length > 0 ? (
+        ratedTvShows.results.map((tvShow: TvShowProps) => (
+          <TvShowItem key={tvShow.id} tvShow={tvShow} />
+        ))
+      ) : (
+        <p>No rated Tv shows</p>
+      )}
     </div>
   );
 }
