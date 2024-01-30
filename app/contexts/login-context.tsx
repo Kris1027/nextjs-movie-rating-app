@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from 'react';
 import { GetSessionId } from '../lib/auth';
+import { useRouter } from 'next/navigation';
 
 type LoginContextType = {
   data: null | { [key: string]: any };
@@ -21,6 +22,7 @@ export const LoginContext = createContext<LoginContextType | undefined>(
 export const LoginProvider = ({ children }: { children: ReactNode }) => {
   const [data, setData] = useState<null | { [key: string]: any }>(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const loggedIn =
@@ -41,6 +43,7 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
   const handleLogout = () => {
     localStorage.removeItem('guest_session_id');
     setLoggedIn(false);
+    router.push('/');
   };
 
   return (
