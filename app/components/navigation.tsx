@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLogin } from '../contexts/login-context';
 
 export default function Navigation() {
   const path = usePathname();
+  const { loggedIn } = useLogin();
 
   return (
     <nav className="hidden sm:block">
