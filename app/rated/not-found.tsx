@@ -7,7 +7,7 @@ export default function NotFound() {
     <main className="flex flex-col items-center p-4 max-w-[1280px] mx-auto text-center text-3xl gap-2">
       <TbError404Off className="text-9xl text-red-500" />
       <h2 className="text-6xl text-red-500">Not Found</h2>
-      <p className="text-secondary">Could not find requested resource</p>
+      <p className="text-secondary">Could not find rated movie or tv show</p>
       <Link
         className="bg-secondary rounded-lg p-2 hover:text-green-500 uppercase flex flex-col items-center"
         href="/"
