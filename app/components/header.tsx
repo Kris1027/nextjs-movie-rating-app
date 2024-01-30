@@ -14,7 +14,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between bg-secondary h-10 items-center p-6 max-w-[1280px] mx-auto relative">
+    <header className="flex justify-between bg-secondary h-[150px] items-center p-6 max-w-[1280px] mx-auto relative">
       <Logo />
       <div onClick={handleClick} className="sm:hidden">
         {isMenuOpen ? (

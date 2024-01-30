@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#12100E',
-        secondary: '#30321C',
+        secondary: '#3C373D',
         tertiary: '#4A4B2F',
         quaternary: '#6B654B',
         quinary: '#D4DF9E',
