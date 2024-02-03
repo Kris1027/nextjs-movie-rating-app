@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { RateMovie, RateTvShow } from '../lib/rateData';
-import Button from '../ui/button';
+import { FaStar } from 'react-icons/fa';
 
 export default function RatingItem({
   id,
@@ -11,14 +11,14 @@ export default function RatingItem({
   type: 'movie' | 'tvShow';
 }) {
   const [rating, setRating] = useState<number>(0);
+  const [hover, setHover] = useState<number | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (ratingValue: number) => {
     let response;
     if (type === 'movie') {
-      response = await RateMovie(id, rating);
+      response = await RateMovie(id, ratingValue);
     } else if (type === 'tvShow') {
-      response = await RateTvShow(id, rating);
+      response = await RateTvShow(id, ratingValue);
     }
     if (response) {
       alert('Rated!');
@@ -28,15 +28,31 @@ export default function RatingItem({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex">
-      <input
-        type="number"
-        min="0"
-        max="10"
-        step="0.5"
-        onChange={(e) => setRating(Number(e.target.value))}
-      />
-      <Button type="submit">rate</Button>
+    <form className="flex justify-center">
+      {[...Array(10)].map((star, i) => {
+        const ratingValue = i + 1;
+        return (
+          <label key={i}>
+            <input
+              className="hidden"
+              type="radio"
+              name="rating"
+              value={ratingValue}
+              onChange={async () => {
+                setRating(ratingValue);
+                await handleSubmit(ratingValue);
+              }}
+            />
+            <FaStar
+              size={40}
+              color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+              className="cursor-pointer"
+              onMouseEnter={() => setHover(ratingValue)}
+              onMouseLeave={() => setHover(null)}
+            />
+          </label>
+        );
+      })}
     </form>
   );
 }
