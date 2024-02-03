@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 export default function Logo() {
   return (
-    <Link className="w-72 h-32 md:w-96 md:h-40 relative" href="/">
-      <Image src="/logo.png" alt="logo" fill />
+    <Link href="/" className="w-96 h-96 relative">
+      <Image src="/logo.png" alt="logo" layout="fill" objectFit="contain" />
     </Link>
   );
 }

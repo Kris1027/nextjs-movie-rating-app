@@ -53,14 +53,15 @@ export default function DetailedMovieItem({ movie }: Movie) {
   };
 
   return (
-    <>
+    <div className="flex flex-col md:flex-row">
       <Image
         src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
         alt={`${movie.title} poster`}
         width={500}
         height={750}
+        className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 px-4"
       />
-      <div>
+      <div className="p-4 w-full sm:w-1/2 md:w-2/3 lg:w-3/4 xl:w-4/5 2xl:w-5/6">
         <h1 className="text-3xl font-bold">{movie.title}</h1>
         <p className={ratingMovieColor()}>{movie.vote_average.toFixed(2)}</p>
         <p>{movie.release_date}</p>
@@ -93,6 +94,6 @@ export default function DetailedMovieItem({ movie }: Movie) {
         <p>Language: {movie.original_language}</p>
         <RatingItem id={movie.id} type="movie" />
       </div>
-    </>
+    </div>
   );
 }
