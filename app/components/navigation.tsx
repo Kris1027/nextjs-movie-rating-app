@@ -7,7 +7,7 @@ export default function Navigation() {
   const { loggedIn, handleLogin, handleLogout } = useLogin();
 
   return (
-    <nav className="hidden sm:block">
+    <nav className="hidden md:block">
       <ul className="flex gap-3 justify-center">
         <li>
           <Link className={path === '/' ? 'text-red-500' : ''} href="/">
