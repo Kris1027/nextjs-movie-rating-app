@@ -1,6 +1,11 @@
 import { fetchMovies } from '../lib/fetchData';
 import MovieItem, { type MovieProps } from '../components/movie-item';
 
+export const metadata = {
+  title: 'All movies',
+  description: 'All movies available in the database',
+};
+
 export default async function MoviesPage() {
   const movies = await fetchMovies();
 
