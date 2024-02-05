@@ -4,45 +4,45 @@ import { useLogin } from '../contexts/login-context';
 import Login from './login';
 import Logout from './logout';
 
+type NavigateLink = {
+  path: string;
+  name: string;
+  auth: boolean;
+};
+
 export default function Navigation() {
   const path = usePathname();
   const { loggedIn } = useLogin();
 
+  const navigateLink: NavigateLink[] = [
+    { path: '/', name: 'Home', auth: false },
+    { path: '/rated', name: 'Rated', auth: true },
+    { path: '/movies', name: 'Movies', auth: false },
+    { path: '/tvshows', name: 'TV Shows', auth: false },
+  ];
+
   return (
     <nav className="hidden md:block">
       <ul className="flex gap-3 justify-center">
-        <li>
-          <Link className={path === '/' ? 'text-red-500' : ''} href="/">
-            Home
-          </Link>
-        </li>
-        {loggedIn && (
-          <li>
-            <Link
-              className={path === '/rated' ? 'text-red-500' : ''}
-              href="/rated"
-            >
-              Rated
-            </Link>
-          </li>
-        )}
-        <li>
-          <Link
-            className={path === '/movies' ? 'text-red-500' : ''}
-            href="/movies"
-          >
-            Movies
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={path === '/tvshows' ? 'text-red-500' : ''}
-            href="/tvshows"
-          >
-            TV Shows
-          </Link>
-        </li>
-        <li>{!loggedIn ? <Login /> : <Logout />}</li>
+        {navigateLink.map((link) => {
+          if (link.auth && !loggedIn) {
+            return null;
+          }
+
+          return (
+            <li key={link.path}>
+              <Link
+                href={link.path}
+                className={`${
+                  path === link.path ? 'text-blue-500' : 'text-gray-500'
+                }`}
+              >
+                {link.name}
+              </Link>
+            </li>
+          );
+        })}
+        <li>{loggedIn ? <Logout /> : <Login />}</li>
       </ul>
     </nav>
   );
