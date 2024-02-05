@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLogin } from '../contexts/login-context';
+import Login from './login';
+import Logout from './logout';
 
 export default function Navigation() {
   const path = usePathname();
-  const { loggedIn, handleLogin, handleLogout } = useLogin();
+  const { loggedIn } = useLogin();
 
   return (
     <nav className="hidden md:block">
@@ -40,23 +42,7 @@ export default function Navigation() {
             TV Shows
           </Link>
         </li>
-        <li>
-          {!loggedIn ? (
-            <button
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 active:scale-75"
-              onClick={handleLogin}
-            >
-              Login
-            </button>
-          ) : (
-            <button
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 active:scale-75"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          )}
-        </li>
+        <li>{!loggedIn ? <Login /> : <Logout />}</li>
       </ul>
     </nav>
   );
