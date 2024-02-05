@@ -1,14 +1,12 @@
 import { useLogin } from '../contexts/login-context';
+import { FaUserCircle } from 'react-icons/fa';
 
 export default function Login() {
   const { handleLogin } = useLogin();
 
   return (
-    <button
-      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 active:scale-75"
-      onClick={handleLogin}
-    >
-      Login
+    <button className="text-3xl active:scale-75" onClick={handleLogin}>
+      <FaUserCircle />
     </button>
   );
 }
