@@ -5,7 +5,10 @@ export default function Logout() {
   const { handleLogout } = useLogin();
 
   return (
-    <button className="text-3xl active:scale-75" onClick={handleLogout}>
+    <button
+      className="text-blue-500 text-3xl active:scale-75"
+      onClick={handleLogout}
+    >
       <ImExit />
     </button>
   );
