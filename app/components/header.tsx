@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header className="flex justify-between bg-secondary h-40 items-center p-6 max-w-[1280px] mx-auto">
       <Logo />
-      <div onClick={handleMobileMenuOpen} className="md:hidden">
+      <div onClick={handleMobileMenuOpen} className="md:hidden text-blue-500">
         {isMenuOpen ? (
           <IoMdCloseCircleOutline size={30} />
         ) : (
