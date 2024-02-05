@@ -36,13 +36,13 @@ type Genres = {
 
 export default function DetailedMovieItem({ movie }: Movie) {
   return (
-    <div className="px-4 flex flex-col flex-wrap md:flex-row gap-4">
-      <div className="w-full h-[700px] md:w-1/2 md:h-auto relative">
+    <main className="px-4 flex flex-col items-center md:flex-row gap-4 md:justify-between">
+      <div>
         <Image
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           alt={`${movie.title} poster`}
-          objectFit="contain"
-          layout="fill"
+          width={400}
+          height={550}
         />
       </div>
       <div className="w-full md:w-1/2">
@@ -105,6 +105,6 @@ export default function DetailedMovieItem({ movie }: Movie) {
         </p>
         <RatingItem id={movie.id} type="movie" />
       </div>
-    </div>
+    </main>
   );
 }
