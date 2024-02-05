@@ -22,22 +22,24 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="hidden md:block">
-      <ul className="flex gap-3 justify-center">
+    <nav className="hidden md:block w-full">
+      <ul className="flex justify-between text-2xl items-center">
         {navigateLink.map((link) => {
           if (link.auth && !loggedIn) {
             return null;
           }
-
           return (
-            <li key={link.path}>
+            <li
+              key={link.path}
+              className="bg-primary py-2 px-6 rounded-md bg-opacity-25"
+            >
               <Link
                 href={link.path}
                 className={`${
                   path === link.path ? 'text-blue-500' : 'text-gray-500'
                 }`}
               >
-                {link.name}
+                <span>{link.name}</span>
               </Link>
             </li>
           );
