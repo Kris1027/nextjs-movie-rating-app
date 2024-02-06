@@ -62,8 +62,8 @@ export default function NavigationMobile() {
   ];
 
   return (
-    <nav className="bg-secondary absolute w-full h-full bottom-0 left-0 z-50">
-      <ul className="flex flex-col gap-20 items-center p-3 text-7xl">
+    <nav className="bg-secondary absolute w-full h-screen bottom-0 left-0 z-50">
+      <ul className="flex flex-col gap-20 items-center p-3 text-5xl">
         <ul className="flex items-center justify-between text-3xl w-full text-blue-500">
           <li>{loggedIn ? <Logout /> : <Login />}</li>
           <li>
