@@ -10,7 +10,7 @@ export default function Header() {
   const { isMenuOpen, handleMobileMenuOpen } = useMobileMenu();
 
   return (
-    <header className="flex justify-between bg-secondary h-40 items-center p-6 max-w-[1280px] mx-auto">
+    <header className="flex justify-between bg-secondary h-44 items-center p-6 max-w-[1280px] mx-auto">
       <Logo />
       <div onClick={handleMobileMenuOpen} className="md:hidden text-blue-500">
         {isMenuOpen ? (
