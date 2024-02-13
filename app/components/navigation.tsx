@@ -44,8 +44,9 @@ export default function Navigation() {
           }
           return (
             <motion.li
-              initial={{ x: '100vw' }}
-              animate={{ x: 0 }}
+              initial={{ x: '-100vw', scale: 0, opacity: 0 }}
+              animate={{ x: 0, scale: 1, opacity: 1 }}
+              transition={{ duration: 1 }}
               key={link.path}
               className="px-2 border-b-2 border-b-transparent hover:border-b-2 hover:border-blue-500 transition-all duration-300 ease-in-out"
             >
