@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLogin } from '../contexts/login-context';
@@ -46,9 +47,11 @@ export default function Navigation() {
             <motion.li
               initial={{ x: '-100vw', scale: 0, opacity: 0 }}
               animate={{ x: 0, scale: 1, opacity: 1 }}
-              transition={{ duration: 1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: 'spring', stiffness: 300 }}
               key={link.path}
-              className="px-2 border-b-2 border-b-transparent hover:border-b-2 hover:border-blue-500 transition-all duration-300 ease-in-out"
+              className="px-2"
             >
               <Link
                 href={link.path}
