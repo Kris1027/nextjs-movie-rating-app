@@ -10,6 +10,8 @@ import { FaStar } from 'react-icons/fa';
 import { BiSolidMoviePlay } from 'react-icons/bi';
 import { IoTvSharp } from 'react-icons/io5';
 
+import { motion } from 'framer-motion';
+
 type NavigateLink = {
   path: string;
   name: string;
@@ -41,7 +43,9 @@ export default function Navigation() {
             return null;
           }
           return (
-            <li
+            <motion.li
+              initial={{ x: '100vw' }}
+              animate={{ x: 0 }}
               key={link.path}
               className="px-2 border-b-2 border-b-transparent hover:border-b-2 hover:border-blue-500 transition-all duration-300 ease-in-out"
             >
@@ -59,7 +63,7 @@ export default function Navigation() {
                 {link.icon && link.icon}
                 <span>{link.name}</span>
               </Link>
-            </li>
+            </motion.li>
           );
         })}
         <li>{loggedIn ? <Logout /> : <Login />}</li>
