@@ -8,6 +8,7 @@ import Login from './login';
 import { IoHome, IoTvSharp } from 'react-icons/io5';
 import { FaStar } from 'react-icons/fa';
 import { BiSolidMoviePlay } from 'react-icons/bi';
+import { useMediaQuery } from './utils/useMediaQuery';
 
 type NavigateLink = {
   path: string;
@@ -20,7 +21,9 @@ type NavigateLink = {
 export default function NavigationMobile() {
   const path = usePathname();
   const { loggedIn } = useLogin();
-  const { handleMobileMenuOpen } = useMobileMenu();
+  const { handleMobileMenuOpen, isMenuOpen } = useMobileMenu();
+
+  const matches = useMediaQuery('(min-width: 768px)');
 
   const navigateLink: NavigateLink[] = [
     {
@@ -62,42 +65,43 @@ export default function NavigationMobile() {
   ];
 
   return (
-    <nav className="bg-secondary absolute w-full min-h-full bottom-0 left-0 z-50">
-      <ul className="flex flex-col gap-20 items-center p-3 text-5xl">
-        <ul className="flex items-center justify-between text-3xl w-full text-blue-500">
-          <li>{loggedIn ? <Logout /> : <Login />}</li>
-          <li>
-            <IoMdCloseCircleOutline
-              onClick={handleMobileMenuOpen}
-              className="cursor-pointer"
-            />
-          </li>
-        </ul>
-        {navigateLink.map((link) => {
-          if (link.auth && !loggedIn) {
-            return null;
-          }
-          return (
-            <li
-              key={link.path}
-              className="px-2 border-b-4 border-b-transparent hover:border-blue-500 transition-all duration-300 ease-in-out"
-            >
-              <Link
-                href={link.path}
-                className={`${
-                  path === link.path
-                    ? 'text-blue-500'
-                    : 'text-gray-500 hover:text-blue-500'
-                } flex items-center`}
-                onClick={link.onClick}
-              >
-                {link.icon && link.icon}
-                <span>{link.name}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <>
+      {!matches && isMenuOpen && (
+        <nav className="bg-secondary fixed justify-around w-full h-screen top-0 left-0 z-50">
+          <ul className="flex flex-col items-center gap-20 p-3 text-5xl">
+            <ul className="flex items-center justify-between text-3xl w-full text-blue-500">
+              <li>{loggedIn ? <Logout /> : <Login />}</li>
+              <li>
+                <IoMdCloseCircleOutline
+                  onClick={handleMobileMenuOpen}
+                  className="cursor-pointer"
+                />
+              </li>
+            </ul>
+            {navigateLink.map((link) => {
+              if (link.auth && !loggedIn) {
+                return null;
+              }
+              return (
+                <li key={link.path} className="px-2">
+                  <Link
+                    href={link.path}
+                    className={`${
+                      path === link.path
+                        ? 'text-blue-500'
+                        : 'text-gray-500 hover:text-blue-500'
+                    } flex items-center`}
+                    onClick={link.onClick}
+                  >
+                    {link.icon && link.icon}
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
+    </>
   );
 }

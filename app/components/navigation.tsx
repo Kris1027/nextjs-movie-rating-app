@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLogin } from '../contexts/login-context';
 import clsx from 'clsx';
+import { useMediaQuery } from './utils/useMediaQuery';
 import Login from './login';
 import Logout from './logout';
 
@@ -24,6 +25,8 @@ export default function Navigation() {
   const path = usePathname();
   const { loggedIn } = useLogin();
 
+  const matches = useMediaQuery('(min-width: 768px)');
+
   const navigateLink: NavigateLink[] = [
     { path: '/', name: 'Home', auth: false, icon: <IoHome /> },
     { path: '/rated', name: 'Rated', auth: true, icon: <FaStar /> },
@@ -37,41 +40,45 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="hidden md:block w-full">
-      <ul className="flex justify-end gap-4 text-2xl items-center">
-        {navigateLink.map((link) => {
-          if (link.auth && !loggedIn) {
-            return null;
-          }
-          return (
-            <motion.li
-              initial={{ x: '-100vw', scale: 0, opacity: 0 }}
-              animate={{ x: 0, scale: 1, opacity: 1 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-              key={link.path}
-              className="px-2"
-            >
-              <Link
-                href={link.path}
-                className={clsx(
-                  `${
-                    path === link.path
-                      ? 'text-blue-500'
-                      : 'text-gray-500 hover:text-blue-500'
-                  }`,
-                  'flex items-center'
-                )}
-              >
-                {link.icon && link.icon}
-                <span>{link.name}</span>
-              </Link>
-            </motion.li>
-          );
-        })}
-        <li>{loggedIn ? <Logout /> : <Login />}</li>
-      </ul>
-    </nav>
+    <>
+      {matches && (
+        <nav className="w-full">
+          <ul className="flex justify-end gap-4 text-2xl items-center">
+            {navigateLink.map((link) => {
+              if (link.auth && !loggedIn) {
+                return null;
+              }
+              return (
+                <motion.li
+                  initial={{ x: '-100vw', scale: 0, opacity: 0 }}
+                  animate={{ x: 0, scale: 1, opacity: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  key={link.path}
+                  className="px-2"
+                >
+                  <Link
+                    href={link.path}
+                    className={clsx(
+                      `${
+                        path === link.path
+                          ? 'text-blue-500'
+                          : 'text-gray-500 hover:text-blue-500'
+                      }`,
+                      'flex items-center'
+                    )}
+                  >
+                    {link.icon && link.icon}
+                    <span>{link.name}</span>
+                  </Link>
+                </motion.li>
+              );
+            })}
+            <li>{loggedIn ? <Logout /> : <Login />}</li>
+          </ul>
+        </nav>
+      )}
+    </>
   );
 }
