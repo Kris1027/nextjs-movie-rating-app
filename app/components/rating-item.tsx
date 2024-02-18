@@ -57,11 +57,10 @@ export default function RatingItem({
                   }}
                 />
                 <FaStar
-                  size={40}
                   color={
                     ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'
                   }
-                  className="cursor-pointer"
+                  className="cursor-pointer text-3xl md:text-4xl"
                   onMouseEnter={() => setHover(ratingValue)}
                   onMouseLeave={() => setHover(null)}
                 />
