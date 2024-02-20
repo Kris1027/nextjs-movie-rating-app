@@ -15,7 +15,7 @@ export type TvShowProps = {
 export default function TvShowItem({ tvShow }: { tvShow: TvShowProps }) {
   return (
     <Link
-      className="w-[350px] h-[450px] relative"
+      className="w-[400px] h-[550px] relative"
       href={`/tvshows/${tvShow.id}`}
     >
       <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-100 h-full bg-secondary bg-opacity-60 flex flex-col items-start">

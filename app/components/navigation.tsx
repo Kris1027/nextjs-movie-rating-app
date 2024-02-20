@@ -43,7 +43,7 @@ export default function Navigation() {
     <>
       {matches && (
         <nav className="w-full">
-          <ul className="flex justify-end gap-4 lg:text-2xl text-md items-center">
+          <ul className="lg:text-2xl text-lg flex justify-around items-center">
             {navigateLink.map((link) => {
               if (link.auth && !loggedIn) {
                 return null;

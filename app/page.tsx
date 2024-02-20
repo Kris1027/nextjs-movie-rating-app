@@ -11,7 +11,7 @@ export default async function Home() {
       <h1 className="text-center pb-4 text-3xl text-quaternary uppercase">
         Find your favorite movies
       </h1>
-      <div className="flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-wrap justify-center gap-1 p-1">
         {movies.results.map((movie: MovieProps) => (
           <MovieItem key={movie.id} movie={movie} />
         ))}
@@ -19,7 +19,7 @@ export default async function Home() {
       <h1 className="text-center pb-4 text-3xl text-quaternary uppercase">
         Find your favorite tv shows
       </h1>
-      <div className="flex flex-wrap gap-4 justify-center p-4">
+      <div className="flex flex-wrap justify-center gap-1 p-1">
         {tvShows.results.map((tvShow: TvShowProps) => (
           <TvShowItem key={tvShow.id} tvShow={tvShow} />
         ))}

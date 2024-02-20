@@ -14,7 +14,7 @@ export type MovieProps = {
 
 export default function MovieItem({ movie }: { movie: MovieProps }) {
   return (
-    <Link className="w-[350px] h-[450px] relative" href={`/movies/${movie.id}`}>
+    <Link className="w-[400px] h-[550px] relative" href={`/movies/${movie.id}`}>
       <div className="p-2 absolute w-full z-10 opacity-0 hover:opacity-100 h-full bg-secondary bg-opacity-60 flex flex-col items-start">
         <h1 className="font-bold text-3xl p-1 w-full flex justify-between text-start">
           <span>{movie.title}</span>{' '}
