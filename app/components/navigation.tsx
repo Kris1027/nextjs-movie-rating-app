@@ -29,6 +29,7 @@ export default function Navigation() {
 
   const navigateLink: NavigateLink[] = [
     { path: '/', name: 'Home', auth: false, icon: <IoHome /> },
+    { path: '/search', name: 'Search', auth: false },
     { path: '/rated', name: 'Rated', auth: true, icon: <FaStar /> },
     {
       path: '/movies',
