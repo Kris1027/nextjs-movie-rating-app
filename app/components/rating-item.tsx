@@ -1,11 +1,15 @@
 'use client';
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { motion } from 'framer-motion';
 import { RateMovie, RateTvShow } from '../lib/rateData';
 import { FaStar } from 'react-icons/fa';
-import Modal from './modal';
-import { useModal } from '../contexts/modal-context';
+import { Modal } from './modal';
 import { useLogin } from '../contexts/login-context';
-import { motion } from 'framer-motion';
+
+export type ModalProps = {
+  setShowModal: (value: boolean) => void;
+};
 
 export default function RatingItem({
   id,
@@ -16,8 +20,13 @@ export default function RatingItem({
 }) {
   const [rating, setRating] = useState<number>(0);
   const [hover, setHover] = useState<number | null>(null);
-  const { showModal, setShowModal } = useModal();
   const { loggedIn } = useLogin();
+  const [showModal, setShowModal] = useState(false);
+
+  const modal = createPortal(
+    <Modal setShowModal={setShowModal} />,
+    document.body
+  );
 
   const handleSubmit = async (ratingValue: number) => {
     let response;
@@ -35,7 +44,7 @@ export default function RatingItem({
 
   return (
     <>
-      {showModal && <Modal />}
+      {showModal && modal}
       {loggedIn && (
         <motion.form
           className="flex justify-center"

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useModal } from '../contexts/modal-context';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { ModalProps } from './rating-item';
 
 const backdrop = {
   initial: { opacity: 0 },
@@ -13,15 +13,14 @@ const modal = {
   animate: { y: 0, opacity: 1, transition: { delay: 0.5 } },
 };
 
-export default function Modal() {
-  const { setShowModal } = useModal();
+export const Modal: React.FC<ModalProps> = ({ setShowModal }) => {
   const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(false);
       router.push('/rated');
-    }, 5000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, [setShowModal, router]);
 
@@ -32,7 +31,7 @@ export default function Modal() {
         initial="initial"
         animate="animate"
         className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-80 z-50 flex justify-center items-center"
-        onClick={() => setShowModal((prev: boolean) => !prev)}
+        onClick={() => setShowModal(false)}
       >
         <motion.div
           className="bg-slate-500 rounded-lg"
@@ -45,4 +44,4 @@ export default function Modal() {
       </motion.div>
     </AnimatePresence>
   );
-}
+};
