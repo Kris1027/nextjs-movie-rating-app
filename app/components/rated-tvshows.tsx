@@ -13,7 +13,7 @@ export default function RatedTvShows() {
     };
 
     fetchRatedMovies();
-  }, [ratedTvShows.results.length]);
+  }, []);
 
   return (
     <div className="flex flex-wrap gap-4">
